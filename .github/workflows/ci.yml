@@ -9,7 +9,7 @@ jobs:
     steps:
       # 拉代码
     - name: Checkout
-        uses: actions/checkout@master
+      uses: actions/checkout@master
     - name: Install and Build
       env:
         MY_VAR: Hi there! My name is
