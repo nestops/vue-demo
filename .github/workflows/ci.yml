@@ -1,0 +1,25 @@
+name: GitHub部署一个vue项目
+on: 
+  push:
+    branches:
+      - master
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Install and Build
+      env:
+        MY_VAR: Hi there! My name is
+        FIRST_NAME: Mona
+        MIDDLE_NAME: The
+        LAST_NAME: Octocat
+      run: |
+        echo $MY_VAR $FIRST_NAME $MIDDLE_NAME $LAST_NAME
+        npm install
+        npm run build
+    - name: Deploy On GitHub Page
+      uses: JamesIves/github-pages-deploy-action@releases/v3
+      with:
+        ACCESS_TOKEN: ${{secrets.ACCESS_TOKEN }}
+        BRANCH: master
+        FOLDER: dist
